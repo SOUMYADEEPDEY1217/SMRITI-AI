@@ -1,11 +1,11 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional
-from app.services import accessibility_service
-from app.services.auth_dependency import get_current_user
-from app.limiter import limiter
-from fastapi import Request
+
+from app.services import audio_logic
+from app.api.dependencies import get_current_user
+from app.core.limiter import limiter
 
 router = APIRouter(prefix="/api/accessibility", tags=["accessibility"])
 
@@ -27,7 +27,7 @@ def translate_text(
     if not payload.text or not payload.text.strip():
         raise HTTPException(status_code=400, detail="Text cannot be empty")
     
-    translated_text = accessibility_service.translate_text(payload.text, payload.target_lang)
+    translated_text = audio_logic.translate_text(payload.text, payload.target_lang)
     return {"original_text": payload.text, "translated_text": translated_text, "target_lang": payload.target_lang}
 
 @router.get("/tts")
@@ -46,7 +46,7 @@ def generate_tts(
         raise HTTPException(status_code=400, detail="Text cannot be empty")
         
     try:
-        audio_stream = accessibility_service.generate_audio(text, lang_code)
+        audio_stream = audio_logic.generate_audio(text, lang_code)
         return StreamingResponse(audio_stream, media_type="audio/mpeg")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

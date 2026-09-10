@@ -13,9 +13,9 @@ from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 import logging
 
-from app.config import settings
-from app.limiter import limiter
-from app.routers import family_members, memories, quiz, reminders, accessibility
+from app.core.config import settings
+from app.core.limiter import limiter
+from app.api.routes import family, memories, quiz, reminders, accessibility, users
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("app")
@@ -52,11 +52,12 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
     return JSONResponse(status_code=500, content={"detail": "Internal server error."})
 
 
-app.include_router(family_members.router)
+app.include_router(family.router)
 app.include_router(memories.router)
 app.include_router(quiz.router)
 app.include_router(reminders.router)
 app.include_router(accessibility.router)
+app.include_router(users.router)
 
 
 @app.get("/health")

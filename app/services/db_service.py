@@ -15,7 +15,7 @@ SECURITY NOTES:
 """
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
-from app.config import settings
+from app.core.config import settings
 
 _app = firebase_admin.initialize_app(
     credentials.Certificate(settings.FIREBASE_CREDENTIALS_PATH),
@@ -75,3 +75,64 @@ def query_by_field(collection: str, field: str, value) -> list[dict]:
         data["_id"] = d.id
         results.append(data)
     return results
+
+
+def query_all(collection: str, limit: int = MAX_QUERY_RESULTS) -> list[dict]:
+    """
+    Admin-only helper: returns all documents in a collection up to `limit`.
+    Regular user routes should NEVER call this — use query_by_field with
+    user_id instead so each user only sees their own data.
+    """
+    limit = min(limit, MAX_QUERY_RESULTS)
+    docs = _db.collection(collection).limit(limit).stream()
+    results = []
+    for d in docs:
+        data = d.to_dict()
+        data["_id"] = d.id
+        results.append(data)
+    return results
+
+
+def set_user_custom_claims(uid: str, claims: dict) -> None:
+    """
+    Sets Firebase custom claims on a user account (e.g. {"role": "doctor"}).
+    Claims are embedded in the signed JWT on next token refresh — the client
+    cannot forge them.
+
+    SECURITY: only call this from admin-gated routes. The uid here is
+    the TARGET user (the one being promoted), verified before calling.
+    """
+    auth.set_custom_user_claims(uid, claims)
+
+
+def get_user_by_email(email: str) -> dict | None:
+    """
+    Resolves a Firebase user by email. Returns the UserRecord dict or None.
+    Used by the admin role-assignment endpoint so the admin can specify a
+    user by human-readable email rather than having to know their UID.
+    """
+    try:
+        user = auth.get_user_by_email(email)
+        return {"uid": user.uid, "email": user.email, "custom_claims": user.custom_claims or {}}
+    except auth.UserNotFoundError:
+        return None
+
+
+def list_firebase_users(max_results: int = 100) -> list[dict]:
+    """
+    Lists Firebase Auth users (paginated, capped at max_results).
+    Used by the admin endpoint to enumerate registered patients.
+    SECURITY: admin-gated route only.
+    """
+    max_results = min(max_results, 500)
+    page = auth.list_users(max_results=max_results)
+    result = []
+    for user in page.users:
+        result.append({
+            "uid": user.uid,
+            "email": user.email,
+            "display_name": user.display_name,
+            "role": (user.custom_claims or {}).get("role", "patient"),
+            "disabled": user.disabled,
+        })
+    return result

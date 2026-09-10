@@ -9,6 +9,7 @@ and fail confusingly later (e.g. silently skipping auth verification).
 import os
 import sys
 from pydantic_settings import BaseSettings
+from pydantic import ConfigDict
 
 
 class Settings(BaseSettings):
@@ -43,8 +44,7 @@ class Settings(BaseSettings):
     # --- Env ---
     ENV: str = "development"
 
-    class Config:
-        env_file = ".env"
+    model_config = ConfigDict(env_file=".env")
 
     @property
     def allowed_origins_list(self) -> list[str]:

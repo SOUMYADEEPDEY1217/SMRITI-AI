@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = [
+    # Third-party package conflict we cannot fix — multipart vs python-multipart
+    "ignore::PendingDeprecationWarning:multipart",
+    "ignore:Please use.*python_multipart:PendingDeprecationWarning",
+]

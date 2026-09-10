@@ -14,7 +14,7 @@ risk here.
 """
 import cloudinary
 import cloudinary.uploader
-from app.config import settings
+from app.core.config import settings
 
 cloudinary.config(
     cloud_name=settings.CLOUDINARY_CLOUD_NAME,
