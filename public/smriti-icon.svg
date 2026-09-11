@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b4332" />
+      <stop offset="100%" stop-color="#2d6a4f" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeaa7" />
+      <stop offset="100%" stop-color="#e17055" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b7efc5" />
+      <stop offset="100%" stop-color="#52b788" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer Rounded Container -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  
+  <!-- Subtle Ambient Circle -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3" stroke-dasharray="10 8" />
+  
+  <!-- Trunk / Foundation of Memory -->
+  <path d="M256,400 C240,360 230,300 240,250 C245,220 256,190 256,150 C256,190 267,220 272,250 C282,300 272,360 256,400 Z" fill="url(#goldGrad)" opacity="0.9" />
+
+  <!-- Cognitive Tree Leaves / Synaptic Blossoms -->
+  <!-- Center Top -->
+  <circle cx="256" cy="130" r="32" fill="url(#leafGrad)" filter="url(#glow)" />
+  
+  <!-- Left Branches -->
+  <path d="M246,230 C200,210 170,180 150,140" fill="none" stroke="#74c69d" stroke-width="8" stroke-linecap="round" />
+  <circle cx="150" cy="140" r="28" fill="url(#goldGrad)" />
+  
+  <path d="M242,270 C180,260 140,240 110,210" fill="none" stroke="#74c69d" stroke-width="7" stroke-linecap="round" />
+  <circle cx="110" cy="210" r="22" fill="url(#leafGrad)" />
+
+  <path d="M244,310 C190,320 150,310 130,280" fill="none" stroke="#74c69d" stroke-width="6" stroke-linecap="round" />
+  <circle cx="130" cy="280" r="18" fill="url(#goldGrad)" />
+
+  <!-- Right Branches -->
+  <path d="M266,230 C312,210 342,180 362,140" fill="none" stroke="#74c69d" stroke-width="8" stroke-linecap="round" />
+  <circle cx="362" cy="140" r="28" fill="url(#goldGrad)" />
+
+  <path d="M270,270 C332,260 372,240 402,210" fill="none" stroke="#74c69d" stroke-width="7" stroke-linecap="round" />
+  <circle cx="402" cy="210" r="22" fill="url(#leafGrad)" />
+
+  <path d="M268,310 C322,320 362,310 382,280" fill="none" stroke="#74c69d" stroke-width="6" stroke-linecap="round" />
+  <circle cx="382" cy="280" r="18" fill="url(#goldGrad)" />
+
+  <!-- Synapse connection dots (gentle cognitive neural points) -->
+  <circle cx="205" cy="175" r="7" fill="#ffffff" opacity="0.8" />
+  <circle cx="307" cy="175" r="7" fill="#ffffff" opacity="0.8" />
+  <circle cx="180" cy="245" r="6" fill="#ffffff" opacity="0.8" />
+  <circle cx="332" cy="245" r="6" fill="#ffffff" opacity="0.8" />
+  
+  <!-- Center Core Heart / Spark of Memory -->
+  <circle cx="256" cy="230" r="14" fill="#ffffff" filter="url(#glow)" />
+
+  <!-- Lotus Base -->
+  <path d="M190,400 C220,420 292,420 322,400 C300,430 212,430 190,400 Z" fill="url(#leafGrad)" />
+</svg>

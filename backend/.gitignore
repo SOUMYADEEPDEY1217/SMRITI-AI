@@ -1,0 +1,18 @@
+# Secrets - NEVER commit these
+.env
+secrets/
+Secrets/
+*firebase-adminsdk*.json
+*firebase-service-account*.json
+test_audio.mp3
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS/editor
+.DS_Store
+.vscode/

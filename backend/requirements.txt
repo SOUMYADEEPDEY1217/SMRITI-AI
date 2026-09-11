@@ -1,0 +1,17 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+firebase-admin>=6.5
+google-cloud-firestore>=2.16
+cloudinary>=1.40
+slowapi>=0.1.9
+httpx>=0.27              # used for the Ollama local-fallback HTTP calls
+insightface>=0.7.3
+onnxruntime>=1.18
+numpy>=1.26
+Pillow>=10.3
+google-generativeai>=0.7   # REQUIRED - primary vision path
+python-multipart>=0.0.9    # required by FastAPI for UploadFile/Form
+pytest>=8.2   # for smoke_test.py / future tests
+gTTS>=2.5     # for text-to-speech voice support
