@@ -1,0 +1,314 @@
+/* ==========================================================================
+   COGNITIVE CARE - Authentication Experience (Reference 2 Aesthetic)
+   Two-column rounded canvas on a warm, calm neutral background.
+   Left: Calming bespoke product/brand composition.
+   Right: Clean, accessible form with tabs for Log In and Create Account,
+   intentional role selection cards, and patient language selection.
+   ========================================================================== */
+
+.auth-page-wrapper {
+  background-color: #f6f5f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Large Rounded Auth Container */
+.auth-split-card {
+  max-width: 1080px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 32px;
+  border: 1px solid #dedcd5;
+  box-shadow: 0 24px 64px -12px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 920px) {
+  .auth-split-card {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+}
+
+/* Left Brand & Visual Panel */
+.auth-visual-panel {
+  background: linear-gradient(145deg, #1b3b2b 0%, #0f241a 100%);
+  color: #ffffff;
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 920px) {
+  .auth-visual-panel {
+    display: none;
+  }
+}
+
+.auth-visual-header {
+  position: relative;
+  z-index: 2;
+}
+
+.auth-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+}
+
+.auth-accent-pip {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #c26d38;
+}
+
+.auth-visual-quote {
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.auth-visual-quote span {
+  color: #c26d38;
+}
+
+.auth-visual-sub {
+  font-size: 1.05rem;
+  color: #a3b899;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* Decorative feature badges inside left visual panel */
+.auth-features-preview {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.auth-feature-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.auth-feature-pill-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.auth-feature-pill-sub {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* Right Form Panel */
+.auth-form-panel {
+  padding: 3.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .auth-form-panel {
+    padding: 2.5rem 1.75rem;
+  }
+}
+
+/* Tab toggle: Sign In vs Create Account */
+.auth-mode-toggle {
+  display: flex;
+  background: #f1efe9;
+  border-radius: 9999px;
+  padding: 0.3rem;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+
+.auth-toggle-tab {
+  background: none;
+  border: none;
+  padding: 0.55rem 1.4rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-toggle-tab.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+/* Role Selection Cards */
+.auth-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.auth-role-card {
+  background: #ffffff;
+  border: 1.5px solid #e2dfd7;
+  border-radius: 16px;
+  padding: 0.85rem 0.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-role-card:hover {
+  border-color: #0f172a;
+}
+
+.auth-role-card.active {
+  border-color: #0f172a;
+  background-color: #faf8f5;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.auth-role-card-label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 0.35rem;
+}
+
+.auth-role-card-desc {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+/* Input Styles */
+.auth-input-group {
+  margin-bottom: 1.25rem;
+}
+
+.auth-input-label {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.45rem;
+}
+
+.auth-text-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.98rem;
+  border-radius: 14px;
+  border: 1.5px solid #dcdad2;
+  background: #ffffff;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.auth-text-input:focus {
+  border-color: #0f172a;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+/* Patient Language Bar */
+.auth-lang-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: #faf8f5;
+  border: 1px solid #e7e5dc;
+  border-radius: 14px;
+  padding: 0.4rem 0.6rem;
+}
+
+.auth-lang-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.45rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-lang-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Quick Demo One-Click Access Row */
+.auth-demo-row {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #efeee8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-demo-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.auth-demo-buttons-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.auth-demo-btn {
+  background: #f8f6f0;
+  border: 1px solid #dedcd5;
+  border-radius: 9999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auth-demo-btn:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}

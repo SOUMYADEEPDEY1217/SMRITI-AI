@@ -1,0 +1,12 @@
+{
+  "name": "smriti-ai",
+  "private": true,
+  "version": "1.0.0",
+  "description": "SMRITI-AI: AI Cognitive Care Platform — monorepo root with frontend/ and backend/ workspaces.",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint",
+    "preview": "npm --prefix frontend run preview"
+  }
+}
