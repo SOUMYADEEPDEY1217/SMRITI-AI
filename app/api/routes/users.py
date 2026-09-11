@@ -4,11 +4,39 @@ from pydantic import BaseModel, Field
 from datetime import datetime, timedelta
 
 from app.services import db_service
-from app.api.dependencies import get_admin_user, get_doctor_user
+from app.api.dependencies import get_admin_user, get_doctor_user, get_current_user
 
 router = APIRouter(prefix="/api/users", tags=["users"])
 
 ValidRole = Literal["patient", "caregiver", "doctor", "admin"]
+ValidLanguage = Literal["en", "bn"]
+
+class UserProfileUpdate(BaseModel):
+    preferred_language: ValidLanguage = Field(..., description="User's preferred language (e.g., 'en' for English, 'bn' for Bengali)")
+
+# --- User Profile Routes ---
+
+@router.get("/me")
+def get_my_profile(user=Depends(get_current_user)):
+    """Fetch the current user's profile settings (e.g., language)."""
+    doc = db_service.get_document("users", user["uid"])
+    if not doc:
+        # Default profile if not created yet
+        return {"uid": user["uid"], "preferred_language": "en"}
+    return doc
+
+
+@router.patch("/me")
+def update_my_profile(payload: UserProfileUpdate, user=Depends(get_current_user)):
+    """Update the current user's profile settings."""
+    doc = db_service.get_document("users", user["uid"])
+    changes = {"preferred_language": payload.preferred_language}
+    if not doc:
+        db_service.add_document("users", changes, doc_id=user["uid"])
+    else:
+        db_service.update_document("users", user["uid"], changes)
+    return {"status": "success", "preferred_language": payload.preferred_language}
+
 
 # --- Admin Routes ---
 

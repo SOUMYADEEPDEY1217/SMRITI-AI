@@ -45,6 +45,8 @@ EXPECTED_ROUTES = {
     ("GET",  "/api/users/patients/{patient_uid}/profile"),
     ("POST", "/api/users/roles/assign"),
     ("GET",  "/api/users/patients/{patient_uid}/summary"),
+    ("GET",  "/api/users/me"),
+    ("PATCH", "/api/users/me"),
     ("POST", "/api/accessibility/translate"),
     ("GET",  "/api/accessibility/tts"),
     ("GET",  "/health"),
