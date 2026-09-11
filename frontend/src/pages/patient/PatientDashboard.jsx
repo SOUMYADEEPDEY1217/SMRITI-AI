@@ -70,6 +70,44 @@ export default function PatientDashboard() {
       </section>
 
       {/* -------------------------------------------------------------
+          Quick Access: New Features
+          ------------------------------------------------------------- */}
+      <div className="quick-access-grid" style={{ marginBottom: '2.5rem' }}>
+        <div className="quick-access-card" onClick={() => navigate('/patient/memories')} role="button" tabIndex={0}>
+          <div className="quick-access-icon" style={{ background: 'var(--color-primary-tint)' }}>📸</div>
+          <div>
+            <h3>Memories</h3>
+            <p>Upload & browse your photo memories</p>
+          </div>
+          <Icon name="arrow-right" size={16} color="var(--color-text-muted)" />
+        </div>
+        <div className="quick-access-card" onClick={() => navigate('/patient/family')} role="button" tabIndex={0}>
+          <div className="quick-access-icon" style={{ background: 'var(--color-accent-tint)' }}>👨‍👩‍👧‍👦</div>
+          <div>
+            <h3>Family</h3>
+            <p>Enroll & recognize family faces</p>
+          </div>
+          <Icon name="arrow-right" size={16} color="var(--color-text-muted)" />
+        </div>
+        <div className="quick-access-card" onClick={() => navigate('/patient/reminders')} role="button" tabIndex={0}>
+          <div className="quick-access-icon" style={{ background: 'var(--color-teal-tint)' }}>⏰</div>
+          <div>
+            <h3>Reminders</h3>
+            <p>Medication, appointments & routines</p>
+          </div>
+          <Icon name="arrow-right" size={16} color="var(--color-text-muted)" />
+        </div>
+        <div className="quick-access-card" onClick={() => navigate('/patient/quiz')} role="button" tabIndex={0}>
+          <div className="quick-access-icon" style={{ background: 'var(--color-indigo-tint)' }}>🧩</div>
+          <div>
+            <h3>Memory Quiz</h3>
+            <p>AI-generated recall questions</p>
+          </div>
+          <Icon name="arrow-right" size={16} color="var(--color-text-muted)" />
+        </div>
+      </div>
+
+      {/* -------------------------------------------------------------
           Section Title & Cognitive Fingerprint Shortcut
           ------------------------------------------------------------- */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.8rem', flexWrap: 'wrap', gap: '1rem' }}>

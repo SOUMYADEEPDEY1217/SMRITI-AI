@@ -1,16 +1,54 @@
-# React + Vite
+# SMRITI-AI — AI Cognitive Care Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An AI-powered cognitive care platform for memory support and cognitive stimulation. The project is organized as a monorepo with clearly separated **frontend** and **backend** directories.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```
+SIH/
+├── frontend/         # React + Vite frontend
+│   ├── src/          # Components, pages, activities, utils, styles
+│   ├── public/       # Static assets
+│   ├── index.html    # Vite entry point
+│   ├── vite.config.js
+│   └── package.json
+├── backend/          # FastAPI Python backend
+│   ├── app/          # Application modules (routers, services)
+│   ├── main.py       # App entrypoint
+│   └── requirements.txt
+├── package.json      # Root convenience scripts
+└── README.md
+```
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
 
-## Expanding the Oxlint configuration
+```bash
+# From the project root (convenience scripts):
+npm run dev        # starts Vite dev server at http://localhost:5173
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+# Or directly from the frontend directory:
+cd frontend
+npm install
+npm run dev
+```
+
+### Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+The backend API serves at `http://localhost:8000`. The frontend expects it there (configured in `frontend/src/data/api.js`).
+
+## Tech Stack
+
+| Layer    | Technology                          |
+|----------|-------------------------------------|
+| Frontend | React 19, Vite 8, Chart.js         |
+| Backend  | FastAPI, Pydantic, SlowAPI          |
+| AI/ML    | Google Gemini, Ollama (LLaVA)       |
+| Storage  | Firebase, Cloudinary                |

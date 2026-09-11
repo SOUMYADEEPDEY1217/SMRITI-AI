@@ -75,7 +75,7 @@ export default function LandingPage() {
 
   return (
     <div className="landing-page-frame">
-      <div className="landing-canvas-container">
+      <div className="landing-canvas-container" style={{ background: 'transparent' }}>
         {/* =============================================================
             1. MINIMAL FLOATING NAVBAR
             ============================================================= */}
@@ -143,195 +143,23 @@ export default function LandingPage() {
           </div>
 
           {/* Overlapping Hero Product UI Mockups */}
-          <div className="hero-mockup-stage">
-            {/* Top-Right Floating Card: Cognitive Balance */}
-            <div className="floating-ui-card floating-card-top-right">
-              <div
-                style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '10px',
-                  backgroundColor: '#f8f6f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#c26d38'
-                }}
-              >
-                <Icon name="fingerprint" size={20} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', fontWeight: 700 }}>
-                  Cognitive Balance
-                </div>
-                <div style={{ fontSize: '0.96rem', fontWeight: 800, color: '#0f172a' }}>
-                  89% Recall Harmony
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom-Left Floating Card: Adaptive Pacing */}
-            <div className="floating-ui-card floating-card-bottom-left">
-              <div
-                style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '10px',
-                  backgroundColor: '#f8f6f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#2d6a4f'
-                }}
-              >
-                <Icon name="shield-check" size={20} />
-              </div>
-              <div>
-                <div style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', fontWeight: 700 }}>
-                  Adaptive Pacing
-                </div>
-                <div style={{ fontSize: '0.96rem', fontWeight: 800, color: '#0f172a' }}>
-                  Comfort Mode &bull; Dynamically Tuned
-                </div>
-              </div>
-            </div>
-
-            {/* Central Product Mockup Card: Patient Activity Interface */}
-            <div className="main-product-mockup-card">
-              <div className="mockup-window-controls">
-                <span className="mockup-dot"></span>
-                <span className="mockup-dot"></span>
-                <span className="mockup-dot"></span>
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8', marginLeft: '0.5rem', fontWeight: 600 }}>
-                  Cognitive Care &bull; Daily Memory Oasis &bull; Visual Recall
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <div>
-                  <span style={{ fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: '#c26d38', fontWeight: 800 }}>
-                    Exercise 01 of 03
-                  </span>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a', marginTop: '0.2rem' }}>
-                    Memory Garden: Gentle Floral Sequence
-                  </h3>
-                </div>
-                <span
-                  style={{
-                    backgroundColor: '#f8f6f0',
-                    border: '1px solid #e2dfd7',
-                    padding: '0.35rem 0.85rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.82rem',
-                    fontWeight: 700,
-                    color: '#0f172a'
-                  }}
-                >
-                  Unpaced Session
-                </span>
-              </div>
-
-              <p style={{ fontSize: '0.95rem', color: '#475467', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-                Select the familiar flower blossom shown in the previous garden display. Take your time without rush.
-              </p>
-
-              {/* Interactive Floral Cards inside Mockup */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.75rem' }}>
-                <button
-                  type="button"
-                  onClick={() => handleHeroSelectFlower('lotus', 'Pink Lotus')}
-                  style={{
-                    background: heroFlowerSelected === 'lotus' ? '#faf8f5' : '#ffffff',
-                    border: heroFlowerSelected === 'lotus' ? '2px solid #0f172a' : '1px solid #e2dfd7',
-                    borderRadius: '16px',
-                    padding: '1.25rem 1rem',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#fee2e2', margin: '0 auto 0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon name="garden" size={20} color="#b91c1c" />
-                  </div>
-                  <div style={{ fontWeight: 800, fontSize: '1rem', color: '#0f172a' }}>Pink Lotus</div>
-                  <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '0.2rem' }}>Sacred Blossom</div>
-                  {heroFlowerSelected === 'lotus' && (
-                    <span style={{ position: 'absolute', top: 10, right: 10, width: 8, height: 8, borderRadius: '50%', backgroundColor: '#c26d38' }} />
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleHeroSelectFlower('jasmine', 'White Jasmine')}
-                  style={{
-                    background: heroFlowerSelected === 'jasmine' ? '#faf8f5' : '#ffffff',
-                    border: heroFlowerSelected === 'jasmine' ? '2px solid #0f172a' : '1px solid #e2dfd7',
-                    borderRadius: '16px',
-                    padding: '1.25rem 1rem',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#e0e7ff', margin: '0 auto 0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon name="garden" size={20} color="#3730a3" />
-                  </div>
-                  <div style={{ fontWeight: 800, fontSize: '1rem', color: '#0f172a' }}>White Jasmine</div>
-                  <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '0.2rem' }}>Fragrant Petals</div>
-                  {heroFlowerSelected === 'jasmine' && (
-                    <span style={{ position: 'absolute', top: 10, right: 10, width: 8, height: 8, borderRadius: '50%', backgroundColor: '#c26d38' }} />
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleHeroSelectFlower('marigold', 'Golden Marigold')}
-                  style={{
-                    background: heroFlowerSelected === 'marigold' ? '#faf8f5' : '#ffffff',
-                    border: heroFlowerSelected === 'marigold' ? '2px solid #0f172a' : '1px solid #e2dfd7',
-                    borderRadius: '16px',
-                    padding: '1.25rem 1rem',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#fef3c7', margin: '0 auto 0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Icon name="garden" size={20} color="#b45309" />
-                  </div>
-                  <div style={{ fontWeight: 800, fontSize: '1rem', color: '#0f172a' }}>Golden Marigold</div>
-                  <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '0.2rem' }}>Festive Warmth</div>
-                  {heroFlowerSelected === 'marigold' && (
-                    <span style={{ position: 'absolute', top: 10, right: 10, width: 8, height: 8, borderRadius: '50%', backgroundColor: '#c26d38' }} />
-                  )}
-                </button>
-              </div>
-
-              {/* Bottom Mockup Reassurance Bar */}
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingTop: '1.25rem',
-                  borderTop: '1px solid #f1efe8',
-                  flexWrap: 'wrap',
-                  gap: '0.75rem'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#2d6a4f', fontSize: '0.88rem', fontWeight: 700 }}>
-                  <Icon name="check" size={16} />
-                  <span>{heroFeedback}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', fontSize: '0.85rem', color: '#64748b' }}>
-                  <span>Accuracy: <strong style={{ color: '#0f172a' }}>94%</strong></span>
-                  <span>Average Time: <strong style={{ color: '#0f172a' }}>3.8s</strong></span>
-                </div>
-              </div>
-            </div>
+          <div className="hero-mockup-stage" style={{ perspective: '1000px' }}>
+            <img 
+              src="/nostalgic_family.jpg" 
+              alt="A loving elderly couple with their grandchild, sharing a warm nostalgic moment"
+              style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '24px',
+                boxShadow: '0 24px 48px rgba(27, 59, 43, 0.25), 0 0 0 1px rgba(255,255,255,0.1) inset',
+                transform: 'rotateY(-5deg) rotateX(5deg)',
+                transition: 'transform 0.5s ease',
+                objectFit: 'cover',
+                maxHeight: '600px'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'rotateY(0deg) rotateX(0deg)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'rotateY(-5deg) rotateX(5deg)'}
+            />
           </div>
         </section>
 

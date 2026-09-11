@@ -7,9 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+
+# Local env files
 *.local
 
 # Editor directories and files
@@ -22,3 +27,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backend
+backend/.env
+backend/secrets/
+backend/Secrets/
+backend/*firebase-adminsdk*.json
+backend/*firebase-service-account*.json
+backend/test_audio.mp3
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+backend/venv/
+backend/*.egg-info/

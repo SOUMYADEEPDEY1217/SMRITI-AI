@@ -15,7 +15,9 @@ import logging
 
 from app.config import settings
 from app.limiter import limiter
-from app.routers import family_members, memories, quiz, reminders, accessibility
+from app.routers import (
+    auth, clinician, admin, activities, family_members, memories, quiz, reminders, accessibility
+)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("app")
@@ -52,6 +54,10 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
     return JSONResponse(status_code=500, content={"detail": "Internal server error."})
 
 
+app.include_router(auth.router)
+app.include_router(clinician.router)
+app.include_router(admin.router)
+app.include_router(activities.router)
 app.include_router(family_members.router)
 app.include_router(memories.router)
 app.include_router(quiz.router)
